@@ -1,18 +1,7 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<meta name="theme-color" content="#07152f">
-<title>KRTI Learning | Drone Simulation</title>
-<style><!doctype html>
-<html lang="id">
-<head>
-<<<<<<< HEAD
-<meta chrset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-=======
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
->>>>>>> 770d699 (Update desain KRTI Learning)
 <meta name="theme-color" content="#07152f">
 <title>KRTI Learning | Drone Simulation</title>
 <style>
@@ -35,12 +24,67 @@ section{padding:65px 0}.alt{background:#091b37}.intro{max-width:700px;margin-bot
 <article class="card"><div class="tag">MATERI 02 · GATE 3–5</div><h3>Navigasi Otomatis Berbasis ArUco</h3><p>Mengenal marker ArUco sebagai referensi visual untuk membantu drone mengenali gate.</p><ul><li>Pengertian dan fungsi marker ArUco.</li><li>Deteksi marker melalui kamera.</li><li>Alur navigasi otomatis Gate 3–5.</li><li>Validasi deteksi dan penanganan kegagalan.</li></ul></article></div></div></section>
 <section class="alt" id="materi1"><div class="wrap"><div class="kicker">Materi 01</div><h2>Pengendalian Manual · Gate 1–2</h2><p>Fokus pembelajaran adalah memahami kendali dasar dan menjaga kestabilan drone sebelum melewati gate.</p><div class="steps"><div class="step"><b>01</b><h3>Persiapan</h3><p>Periksa model drone, koneksi SITL–Gazebo, sensor simulasi, mode penerbangan, dan area lintasan.</p></div><div class="step"><b>02</b><h3>Kendali dasar</h3><p>Pelajari ARM, takeoff, hover, gerak maju/mundur, kiri/kanan, yaw, serta perubahan ketinggian secara bertahap.</p></div><div class="step"><b>03</b><h3>Lintasan gate</h3><p>Latih pendekatan dan lintasan melewati Gate 1–2. Amati posisi, ketinggian, heading, dan kestabilan.</p></div></div><div class="callout"><strong>Catatan keselamatan simulasi:</strong> verifikasi posisi, arah gate, dan koordinat sebelum menjalankan perintah gerak otomatis.</div></div></section>
 <section id="materi2"><div class="wrap"><div class="kicker">Materi 02</div><h2>Navigasi Otomatis ArUco · Gate 3–5</h2><p>Marker visual menjadi referensi bagi sistem untuk mengenali target dan membantu proses navigasi.</p><div class="grid"><div class="card"><h3>1. Pengenalan marker</h3><p>ArUco merupakan pola visual terkode yang dapat dideteksi kamera dan memiliki identitas marker.</p></div><div class="card"><h3>2. Deteksi dan estimasi</h3><p>Sistem memproses citra untuk menemukan marker dan, sesuai konfigurasi kamera, memperkirakan posisi relatifnya.</p></div><div class="card"><h3>3. Logika navigasi</h3><p>Program menentukan tindakan berdasarkan marker yang terdeteksi, posisi relatif, dan tahapan Gate 3–5.</p></div><div class="card"><h3>4. Validasi</h3><p>Uji beberapa jarak dan sudut. Periksa marker hilang, deteksi keliru, respons kendali, dan prosedur abort.</p></div></div><div class="callout"><strong>Catatan:</strong> ID marker, parameter kamera, algoritma, dan urutan gerak harus disesuaikan dengan implementasi aktual proyek KRTI.</div></div></section>
-<section class="alt" id="simulasi"><div class="wrap"><div class="kicker">Lingkungan Praktik</div><h2>Simulasi dengan Gazebo</h2><p>Gazebo dijalankan pada komputer yang memiliki lingkungan ArduPilot SITL dan model dunia KRTI. Website ini menjadi panduan belajar, bukan pengganti aplikasi Gazebo.</p><div class="grid"><div class="card"><h3>Perangkat simulasi</h3><ul><li>Ubuntu dan Gazebo Harmonic.</li><li>ArduPilot SITL / ArduCopter.</li><li>Model drone dan world KRTI 2026.</li><li>Program Python untuk navigasi.</li></ul></div><div class="card"><h3>Alur pengujian</h3><ol><li>Jalankan world KRTI di Gazebo.</li><li>Jalankan ArduPilot SITL.</li><li>Pastikan koneksi MAVLink normal.</li><li>Uji pengendalian manual terlebih dahulu.</li><li>Uji ArUco setelah deteksi dan koordinat tervalidasi.</li></ol></div></div><p>Simulasi 3D tidak berjalan langsung di halaman web statis ini; jalankan Gazebo pada komputer simulasi.</p></div></section>
+<section class="alt" id="simulasi"><div class="wrap"><div class="kicker">Lingkungan Praktik</div><h2>Simulasi dengan Gazebo</h2><p>Gazebo dijalankan pada komputer yang memiliki lingkungan ArduPilot SITL dan model dunia KRTI. Website ini menjadi panduan belajar, bukan pengganti aplikasi Gazebo.</p><div class="grid"><div class="card"><h3>Perangkat simulasi</h3><ul><li>Ubuntu dan Gazebo Harmonic.</li><li>ArduPilot SITL / ArduCopter.</li><li>Model drone dan world KRTI 2026.</li><li>Program Python untuk navigasi.</li></ul></div><div class="card"><h3>Alur pengujian</h3><ol><li>Jalankan world KRTI di Gazebo.</li><li>Jalankan ArduPilot SITL.</li><li>Pastikan koneksi MAVLink normal.</li><li>Uji pengendalian manual terlebih dahulu.</li><li>Uji ArUco setelah deteksi dan koordinat tervalidasi.</li></ol></div></div>
+<div class="callout" id="droneDashboard">
+  <h3>LIVE DRONE TELEMETRY</h3>
+  <p id="connectionStatus">Menghubungkan ke ArduPilot...</p>
+  <div class="grid">
+    <div class="step"><b>MODE</b><h3 id="droneMode">-</h3></div>
+    <div class="step"><b>STATUS ARM</b><h3 id="droneArm">-</h3></div>
+    <div class="step"><b>KETINGGIAN RELATIF</b><h3 id="droneAltitude">0 m</h3></div>
+    <div class="step"><b>KECEPATAN</b><h3 id="droneSpeed">0 m/s</h3></div>
+    <div class="step"><b>BATERAI</b><h3 id="droneBattery">0%</h3></div>
+    <div class="step"><b>KOORDINAT</b><h3 id="dronePosition">-</h3></div>
+  </div>
+</div>
+<p>Data diperbarui otomatis dari ArduPilot SITL.</p>
+
+<div class="callout" id="cameraPanel" style="margin-top:24px;">
+  <h3>LIVE GAZEBO CAMERA</h3>
+  <p>Monitoring kamera depan drone secara langsung.</p>
+  <div style="background:#020817;border-radius:12px;overflow:hidden;">
+    <img
+      src="http://127.0.0.1:8000/video/front.mjpg"
+      alt="Live Gazebo Front Camera"
+      style="display:block;width:100%;height:auto;max-height:520px;object-fit:contain;"
+    >
+  </div>
+  <p>● STREAMING KAMERA DEPAN</p>
+</div>
+</div></section>
 <section id="praktikum"><div class="wrap"><div class="kicker">Aktivitas Siswa</div><h2>Panduan Praktikum</h2><div class="steps"><div class="step"><b>01</b><h3>Observasi</h3><p>Amati model drone, gate, arah lintasan, dan perangkat simulasi. Catat fungsi komponen utama.</p></div><div class="step"><b>02</b><h3>Eksperimen</h3><p>Latihan kendali manual Gate 1–2, kemudian amati proses deteksi marker untuk Gate 3–5.</p></div><div class="step"><b>03</b><h3>Analisis</h3><p>Catat kesalahan lintasan, kestabilan, keberhasilan deteksi, dan hasil pengujian.</p></div></div></div></section>
 <section class="alt" id="evaluasi"><div class="wrap"><div class="kicker">Cek Pemahaman</div><h2>Evaluasi Singkat</h2><details><summary>1. Apa tujuan latihan manual pada Gate 1–2?</summary><p>Melatih kendali dasar, kestabilan, arah, ketinggian, dan kemampuan mengarahkan drone melewati gate.</p></details><details><summary>2. Apa fungsi marker ArUco pada Gate 3–5?</summary><p>Marker menjadi referensi visual yang dapat dideteksi kamera untuk membantu sistem mengenali target.</p></details><details><summary>3. Mengapa koordinat dan arah gate harus diverifikasi?</summary><p>Kesalahan koordinat atau orientasi dapat membuat drone bergerak ke arah yang tidak sesuai.</p></details><details><summary>4. Mengapa pengujian perlu dilakukan bertahap?</summary><p>Agar respons sistem dapat diamati dan masalah ditemukan lebih awal.</p></details></div></section>
 </main><footer><div class="wrap">© 2026 KRTI Learning · Media Pembelajaran Drone KRTI</div></footer>
-<<<<<<< HEAD
 </body></html>
-=======
-</body></html>
->>>>>>> 770d699 (Update desain KRTI Learning)
+<script>
+async function updateDroneTelemetry() {
+  try {
+    const response = await fetch("http://127.0.0.1:8000/api/telemetry");
+    if (!response.ok) throw new Error("Backend tidak merespons");
+
+    const d = await response.json();
+
+    document.getElementById("connectionStatus").textContent =
+      d.connected ? "● TERHUBUNG DENGAN ARDUPILOT" : "● TIDAK TERHUBUNG";
+
+    document.getElementById("droneMode").textContent = d.mode;
+    document.getElementById("droneArm").textContent =
+      d.armed ? "ARMED" : "DISARMED";
+    document.getElementById("droneAltitude").textContent =
+      d.relative_altitude + " m";
+    document.getElementById("droneSpeed").textContent =
+      d.ground_speed + " m/s";
+    document.getElementById("droneBattery").textContent =
+      d.battery + "%";
+    document.getElementById("dronePosition").textContent =
+      d.latitude.toFixed(6) + ", " + d.longitude.toFixed(6);
+
+  } catch (error) {
+    document.getElementById("connectionStatus").textContent =
+      "● BACKEND TIDAK TERHUBUNG";
+  }
+}
+
+updateDroneTelemetry();
+setInterval(updateDroneTelemetry, 1000);
+</script>
